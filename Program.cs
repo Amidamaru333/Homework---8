@@ -127,62 +127,100 @@
 
 //Задача 58: Задайте две матрицы. 
 //Напишите программу, которая будет находить произведение двух матриц.
-Console.Write("Введите количество столбцов в массиве: ");
-int columns = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите количество строк в массиве: ");
-int raws = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество столбцов в массиве: ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество строк в массиве: ");
+// int raws = Convert.ToInt32(Console.ReadLine());
 
-int[,] array = new int[raws, columns];
+// int[,] array = new int[raws, columns];
 
-int[,] secondArray = new int[raws, columns];
+// int[,] secondArray = new int[raws, columns];
 
-int[,] finalArray = new int[raws, columns];
-ArrayRndm(array);
-PrintArray(array);
+// int[,] finalArray = new int[raws, columns];
+// ArrayRndm(array);
+// PrintArray(array);
 
-Console.WriteLine("-----------");
+// Console.WriteLine("-----------");
 
-ArrayRndm(secondArray);
-PrintArray(secondArray);
+// ArrayRndm(secondArray);
+// PrintArray(secondArray);
 
-Console.WriteLine();
+// Console.WriteLine();
 
-// 1 
-for (int i = 0; i < array.GetLength(0); i++)
+// // 1 
+// for (int i = 0; i < array.GetLength(0); i++)
+// {
+//     for (int j = 0; j < secondArray.GetLength(1); j++)
+//     {
+//         finalArray[i, j] = 0;
+//         for (int k = 0; k < array.GetLength(1); k++)
+//         {
+//             finalArray[i, j] += array[i, k] * secondArray[k, j];
+//         }
+//     }
+// }
+
+// PrintArray(finalArray);
+
+// // 2
+// void ArrayRndm(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+// }
+
+// // 3
+// void PrintArray(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write($"{array[i, j]} ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+//Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+int[,,] array = new int[2, 2, 2];
+int count= 0;
+FillArray(array);
+PrintI(array);
+
+
+// 1
+void PrintI(int[,,] array2)
 {
-    for (int j = 0; j < secondArray.GetLength(1); j++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        finalArray[i, j] = 0;
-        for (int k = 0; k < array.GetLength(1); k++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            finalArray[i, j] += array[i, k] * secondArray[k, j];
+            Console.WriteLine();
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                Console.Write($"{array[i, j, k]}({i},{j},{k}) ");
+            }
         }
     }
 }
-
-PrintArray(finalArray);
 
 // 2
-void ArrayRndm(int[,] array)
+void FillArray(int[,,] arr)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            array[i, j] = new Random().Next(1, 10);
+            for (int k = 0; k < arr.GetLength(2); k++)
+            {
+                arr[k, i, j] += count;
+                count += 3;
+            }
         }
-    }
-}
-
-// 3
-void PrintArray(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write($"{array[i, j]} ");
-        }
-        Console.WriteLine();
     }
 }
